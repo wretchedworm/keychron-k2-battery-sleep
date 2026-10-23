@@ -15,12 +15,18 @@ Keeping the keyboard awake may use more battery. We haven't measured the battery
 
 This was built and tested for the **original non-backlit K2-M1**. We don't know whether other Keychron models have the same wake delay or missing battery display, and this release does not claim to fix them. See the exact compatibility below.
 
-## What it does
+## Keychron already provides a sleep shortcut
 
-- Shows the keyboard's reported battery percentage in the menu bar.
-- Warns at 20% and 10% when notifications are allowed and the app is running.
-- Reads the actual auto-sleep setting and lets you switch it ON or OFF.
-- Keeps sleep controls in the dropdown, without taking extra menu-bar space.
+**Disabling auto-sleep is a built-in Keychron feature. You do not need this app just to disable it.**
+
+The [official K2 manual, page 6](https://cdn.shopify.com/s/files/1/0059/0630/1017/files/k2_user_manual_english_version.pdf?v=1609223925) says to hold **Fn + S + O for 4 seconds** to disable auto-sleep, and repeat the shortcut to enable it again. Keychron also documents the toggle in its [official support instructions](https://keychronsupport.zendesk.com/hc/en-us/articles/360044087054-How-to-disable-Auto-Sleep-Mode), dated March 10, 2020; that article specifies 3 seconds rather than the manual's 4 seconds.
+
+## What this app adds
+
+- **An actual state indicator.** See whether auto-sleep is ON or OFF, read directly from the supported keyboard's firmware rather than inferred from remembered shortcut presses.
+- **A software toggle.** Change the existing setting from the Mac menu, with readback verification after the keyboard reconnects.
+- **A visible battery percentage and charge warnings.** See the keyboard's reported level and receive notifications at 20% and 10% when the app is running and notifications are allowed.
+- **A compact menu-bar display.** Sleep controls stay in the dropdown without taking extra menu-bar space.
 
 Independent community project. Not affiliated with or endorsed by Keychron.
 
@@ -86,7 +92,7 @@ The normal tests run offline and do not change keyboard settings. [Verification]
 
 The K2's sleep setting wasn't available through a normal macOS control. We used **[REA — Reverse Engineer Anything](https://github.com/morluto/rea)** with Ghidra to examine the keyboard's installed Bluetooth firmware and trace how its physical sleep shortcut works.
 
-That investigation found a way to read the real setting and change the same saved byte through the keyboard's existing Bluetooth maintenance protocol. The result is a real ON/OFF control, verified by reading the setting back after the keyboard reconnects. It does not require replacement firmware.
+The reverse-engineering work established how to read and control that existing feature from software. It found a way to read the real setting and change the same saved byte through the keyboard's existing Bluetooth maintenance protocol. The result is a real ON/OFF control, verified by reading the setting back after the keyboard reconnects. It does not require replacement firmware.
 
 Credit to **[morluto/rea](https://github.com/morluto/rea)** for the reverse-engineering tools that helped make this possible. REA and Ghidra were used during development; you don't need either to use the app. The [protocol notes](docs/PROTOCOL.md) and [verification notes](docs/VERIFICATION.md) explain what was established and what remains untested.
 
