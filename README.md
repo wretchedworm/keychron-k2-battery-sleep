@@ -1,4 +1,4 @@
-# Keychron Menu
+# Keychron K2 Battery & Sleep
 
 Keep your K2 ready to type, and know when it needs a charge.
 
@@ -26,7 +26,7 @@ Independent community project. Not affiliated with or endorsed by Keychron.
 
 ## Download and install
 
-**[Download the preview installer](https://github.com/wretchedworm/keychron-menu/releases/tag/v1.1.0-preview.1)**
+**[Download the preview installer](https://github.com/wretchedworm/keychron-k2-battery-sleep/releases/tag/v1.1.0-preview.1)**
 
 Requires an **Apple silicon Mac** running **macOS 13 or later**. The preview is **not notarized by Apple**. macOS may block its first launch. Read the [installation guide](docs/INSTALL.md) before installing.
 
@@ -66,8 +66,8 @@ There is no account, analytics or network service. Battery and sleep commands go
 Install Xcode with Swift 6 support, then run:
 
 ```sh
-git clone https://github.com/wretchedworm/keychron-menu.git
-cd keychron-menu
+git clone https://github.com/wretchedworm/keychron-k2-battery-sleep.git
+cd keychron-k2-battery-sleep
 zsh test.sh
 KEYCHRON_SIGNING_IDENTITY=- zsh build.sh
 ```
